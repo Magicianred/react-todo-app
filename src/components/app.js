@@ -30,6 +30,20 @@ export default class App extends React.Component {
         this.setState({ todoData: this.state.todoData });
     }
 
+    saveTask(oldTask, newTask) {
+        const foundTodo = _.find(this.state.todoData, todo => {
+            return todo.task === oldTask;
+        });
+
+        foundTodo.task = newTask;
+        this.setState({ todoData: this.state.todoData });
+    }
+
+    deleteTask(taskToDelete) {
+        _.remove(this.state.todoData, todo => todo.task === taskToDelete);
+        this.setState({ todoData: this.state.todoData })
+    }
+
     toggleTask(task) {
         const foundTodo = _.find(this.state.todoData, todo => {
             return todo.task === task;
@@ -43,10 +57,15 @@ export default class App extends React.Component {
         return (
             <div>
                 <h1>React To-Do App</h1>
-                <CreateTodo createTask={this.createTask.bind(this)} />
+                <CreateTodo
+                    todoData={this.state.todoData}
+                    createTask={this.createTask.bind(this)}
+                />
                 <TodoList
                     todoData={this.state.todoData}
                     toggleTask={this.toggleTask.bind(this)}
+                    saveTask={this.saveTask.bind(this)}
+                    deleteTask={this.deleteTask.bind(this)}
                 />
             </div>
         );
