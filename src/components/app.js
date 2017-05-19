@@ -55,8 +55,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>React To-Do App</h1>
+            <div className='container'>
                 <CreateTodo
                     todoData={this.state.todoData}
                     createTask={this.createTask.bind(this)}

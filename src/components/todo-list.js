@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React from 'react';
-import TodoListHeader from './todo-list-header';
 import TodoListItem from './todo-list-item';
 
 export default class TodoList extends React.Component {
@@ -14,12 +13,9 @@ export default class TodoList extends React.Component {
 
     render() {
         return (
-            <table>
-                <TodoListHeader />
-                <tbody>
-                    {this.renderItems()}
-                </tbody>
-            </table>
+            <ul className="todo-list">
+                {this.renderItems()}
+            </ul>
         );
     }
 }

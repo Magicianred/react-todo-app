@@ -14,9 +14,9 @@ export default class CreateTodo extends React.Component {
             return null;
         } else {
             return (
-                <div>
+                <span className='new-task__error'>
                     {this.state.error}
-                </div>
+                </span>
             )
         }
     }
@@ -49,11 +49,13 @@ export default class CreateTodo extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleCreate.bind(this)}>
-                <input type="text" placeholder="What do I need to do?" ref="createInput"/>
-                <button>Create</button>
-                {this.renderError()}
-            </form>
+            <div className='new-task'>
+                <form onSubmit={this.handleCreate.bind(this)}>
+                    <input type="text" placeholder="What do I need to do?" ref="createInput"/>
+                    <button type="submit" className="new-task__submit">Create</button>
+                    {this.renderError()}
+                </form>
+            </div>
         );
     }
 }

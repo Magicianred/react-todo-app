@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #373737;
+
+    background-color: #239ab9;
+}
+
+.container {
+    margin: 50px auto 0 auto;
+    width: 450px;
+
+    background-color: #fff;
+}
+
+.new-task {
+    padding: 20px;
+
+    border-bottom: 1px solid #b7b7b7;
+}
+
+.new-task input {
+    width: 320px;
+    padding: 5px;
+    margin-right: 10px;
+
+    font-size: 16px;
+    color: #373737;
+
+    border: 1px solid #b7b7b7;
+}
+
+.new-task input:focus {
+    outline: none;
+}
+
+.todo-item input {
+    width: 320px;
+    padding: 5px;
+
+    color: #373737;
+    font-size: 16px;
+
+    border: 1px solid #b7b7b7;
+}
+
+.todo-item input:focus {
+    outline: none;
+}
+
+.todo-item input + .todo-item__actions {
+    line-height: 30px;
+
+    opacity: 1;
+}
+
+.todo-list {
+    padding: 20px;
+    margin: 0;
+
+    list-style: none;
+}
+
+.todo-item:not(:last-child) {
+    padding-bottom: 20px;
+}
+
+.todo-item__task--done {
+    color: #b7b7b7;
+}
+
+.todo-item__task::before {
+    position: absolute;
+    left: 0px;
+
+    font-family: "FontAwesome";
+    text-decoration: none;
+
+    content: "\f10c";
+}
+
+.todo-item__task--done::before {
+    color: #239ab9;
+
+    content: "\f058";
+}
+
+.todo-item__task {
+    position: relative;
+
+    padding-left: 22px;
+}
+
+.todo-item__task--done {
+    text-decoration: line-through;
+}
+
+.todo-item__task {
+    display: block;
+    float: left;
+
+    cursor: pointer;
+}
+
+.todo-item__actions {
+    display: block;
+    float: right;
+
+    font-size: 0;
+}
+
+.todo-item__actions {
+    font-size: 16px;
+
+    opacity: 0;
+}
+
+.todo-item:hover .todo-item__actions {
+    opacity: 1;
+}
+
+.todo-item__actions .fa:first-child {
+    margin-right: 10px;
+}
+
+.todo-item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.new-task__submit {
+    background: white;
+    border: 1px solid #b7b7b7;
+    height: 30px;
+    width: 80px;
+
+    color: #373737;
+    font-size: 16px;
+
+    vertical-align: top;
+    outline: none;
+}
+
+form {
+    font-size: 0;
+}
+
+.new-task__error {
+    display: block;
+    padding-top: 10px;
+    font-size: 16px;
+}

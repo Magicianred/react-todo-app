@@ -29,57 +29,57 @@ export default class TodoListItem extends React.Component {
     renderTaskSection() {
         const { task, isCompleted } = this.props;
 
-        const taskStyle = {
-            color: isCompleted ? 'green' : 'red',
-            cursor: 'pointer'
-        };
-
         if (this.state.isEditing) {
             return (
-                <td>
-                    <form onSubmit={this.onSaveClick.bind(this)}>
-                        <input type="text" defaultValue={task} ref="editInput" />
-                    </form>
-                </td>
+                <input type="text" defaultValue={task} ref="editInput" />
             )
-        }
+        } else {
 
-        return (
-            <td style={taskStyle}
-                onClick={this.props.toggleTask.bind(this, task)}
-            >
-                {task}
-            </td>
-        )
+            let todoItemClassName = 'todo-item__task';
+            if (isCompleted) {
+                todoItemClassName += ' todo-item__task--done';
+            }
+
+            return (
+                <span className={todoItemClassName}
+                    onClick={this.props.toggleTask.bind(this, task)}>
+                    {task}
+                </span>
+            )
+
+        }
     }
 
     renderActionsSection() {
         if (this.state.isEditing) {
             return (
-                <td>
-                    <button onClick={this.onSaveClick.bind(this)}>Save</button>
-                    <button onClick={this.onCancelClick.bind(this)}>Cancel</button>
-                </td>
+                <div className="todo-item__actions">
+                  <i className="fa fa-check" aria-hidden="true"
+                     onClick={this.onSaveClick.bind(this)}></i>
+                  <i className="fa fa-times" aria-hidden="true"
+                     onClick={this.onCancelClick.bind(this)}></i>
+                </div>
             );
         }
 
         return (
-            <td>
-                <button onClick={this.onEditClick.bind(this)}>Edit</button>
-                <button
-                    onClick={this.props.deleteTask.bind(this, this.props.task)}>
-                    Delete
-                </button>
-            </td>
+            <div className="todo-item__actions">
+                <i className="fa fa-pencil"
+                    aria-hidden="true"
+                    onClick={this.onEditClick.bind(this)}></i>
+                <i className="fa fa-trash"
+                    aria-hidden="true"
+                    onClick={this.props.deleteTask.bind(this, this.props.task)}></i>
+            </div>
         );
     }
 
     render() {
         return (
-            <tr>
+            <li className='todo-item'>
                 {this.renderTaskSection()}
                 {this.renderActionsSection()}
-            </tr>
+            </li>
         );
     }
 }
