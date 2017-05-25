@@ -1,0 +1,97 @@
+.todo-item {
+    input {
+        width: 320px;
+        padding: 0 5px;
+        margin: 0 10px 0 0;
+
+        font-size: 16px;
+        color: #373737;
+        line-height: 30px;
+
+        border: 1px solid #b7b7b7;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    &__edit-form + &__actions {
+        line-height: 30px;
+
+        opacity: 1;
+    }
+
+    &:not(:last-child) {
+        padding-bottom: 20px;
+    }
+
+    &:hover &__actions {
+        opacity: 1;
+    }
+
+    &__actions {
+        .fa {
+            cursor: pointer;
+        }
+
+        .fa:first-child {
+            margin-right: 10px;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    &__edit-form {
+        display: block;
+        float: left;
+        width: 320px;
+    }
+
+    &__task {
+        position: relative;
+
+        padding-left: 22px;
+        display: block;
+        float: left;
+        width: 320px;
+
+        cursor: pointer;
+
+        &::before {
+            position: absolute;
+            left: 0px;
+
+            font-family: "FontAwesome";
+            text-decoration: none;
+
+            content: "\f10c";
+        }
+
+        &--done {
+            color: #b7b7b7;
+            text-decoration: line-through;
+        }
+
+        &--done::before {
+            color: #239ab9;
+
+            content: "\f058";
+        }
+
+        &__actions {
+            display: block;
+            float: right;
+
+            font-size: 16px;
+
+            opacity: 0;
+        }
+
+
+    }
+
+}

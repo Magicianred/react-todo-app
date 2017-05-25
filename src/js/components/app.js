@@ -8,8 +8,20 @@ const todoData = [
         isCompleted: true
     },
     {
+        task: 'Pay bills',
+        isCompleted: true
+    },
+    {
         task: 'Pack my things',
         isCompleted: false
+    },
+    {
+        task: 'Wash car',
+        isCompleted: false
+    },
+    {
+        task: 'Buy groceries',
+        isCompleted: true
     }
 ]
 

@@ -5,7 +5,20 @@ export default class TodoListItem extends React.Component {
         super(props);
 
         this.state = {
-            isEditing: false
+            isEditing: false,
+            error: null
+        }
+    }
+
+    renderError() {
+        if (!this.state.error) {
+            return null;
+        } else {
+            return (
+                <span className='new-task__error'>
+                    {this.state.error}
+                </span>
+            )
         }
     }
 
@@ -14,7 +27,7 @@ export default class TodoListItem extends React.Component {
     }
 
     onCancelClick() {
-        this.setState({ isEditing: false });
+        this.setState({ isEditing: false, error: null });
     }
 
     onSaveClick(event) {
@@ -22,8 +35,26 @@ export default class TodoListItem extends React.Component {
 
         const oldTask = this.props.task;
         const newTask = this.refs.editInput.value;
-        this.props.saveTask(oldTask, newTask);
-        this.setState({ isEditing: false })
+
+        const validateResult = this.validateInput(newTask, oldTask);
+
+        if (validateResult) {
+            this.setState({ error: validateResult });
+        } else {
+            this.setState({ error: null });
+            this.props.saveTask(oldTask, newTask);
+            this.setState({ isEditing: false })
+        }
+    }
+
+    validateInput(newTask, oldTask) {
+        if (!newTask) {
+            return 'Please enter a task!';
+        } else if (_.find(this.props.todoData, todo => todo.task === newTask) && newTask != oldTask) {
+            return 'Task already exists!';
+        } else {
+            return null;
+        }
     }
 
     renderTaskSection() {
@@ -31,7 +62,11 @@ export default class TodoListItem extends React.Component {
 
         if (this.state.isEditing) {
             return (
-                <input type="text" defaultValue={task} ref="editInput" />
+                <form className="todo-item__edit-form" onSubmit={this.onSaveClick.bind(this)}>
+                    <input type="text" defaultValue={task} ref="editInput"
+                        placeholder="Enter a new task"/>
+                    {this.renderError()}
+                </form>
             )
         } else {
 
@@ -56,7 +91,7 @@ export default class TodoListItem extends React.Component {
                 <div className="todo-item__actions">
                   <i className="fa fa-check" aria-hidden="true"
                      onClick={this.onSaveClick.bind(this)}></i>
-                  <i className="fa fa-times" aria-hidden="true"
+                  <i className="fa fa-ban" aria-hidden="true"
                      onClick={this.onCancelClick.bind(this)}></i>
                 </div>
             );

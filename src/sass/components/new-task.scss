@@ -1,0 +1,42 @@
+.new-task {
+    padding: 20px;
+
+    border-bottom: 1px solid #b7b7b7;
+
+    input {
+        width: 320px;
+        padding: 5px;
+        margin: 0 10px 0 0;
+
+        font-size: 16px;
+        color: #373737;
+
+        border: 1px solid #b7b7b7;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    &__submit {
+        padding: 0;
+        margin: 0;
+        width: 80px;
+
+        color: #373737;
+        font-size: 16px;
+        line-height: 30px;
+
+        background: white;
+        border: 1px solid #b7b7b7;
+
+        vertical-align: top;
+        outline: none;
+    }
+
+    &__error {
+        display: block;
+        padding-top: 10px;
+        font-size: 16px;
+    }
+}
