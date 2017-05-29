@@ -1,0 +1,14 @@
+.no-items {
+    text-align: center;
+    color: $grey;
+
+    i {
+        display: block;
+        font-size: 75px;
+    }
+
+    span {
+        display: block;
+        margin-top: 10px;
+    }
+}

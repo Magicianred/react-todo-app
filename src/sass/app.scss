@@ -1,3 +1,36 @@
+$main-text-color: rgb(62, 67, 79);
+$back-color: rgb(240, 239, 233);
+$lightgrey: rgb(238, 240, 245);
+$grey: rgb(189, 192, 202);
+$green: rgb(80, 227, 164);
+
+@mixin input-placeholder() {
+    input[type="text"]::-webkit-input-placeholder {
+        color: $grey;
+    }
+
+    input[type="text"]::-moz-placeholder {
+        color: $grey;
+        opacity: 1;
+    }
+
+    input[type="text"]:-ms-input-placeholder {
+        color: $grey;
+    }
+
+    input[type="text"]:-moz-placeholder {
+        color: $grey;
+    }
+
+    input[type="text"]::placeholder {
+        color: $grey;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: $grey;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -8,10 +41,10 @@ body {
     padding: 0;
     margin: 0;
 
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    color: #373737;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    color: $main-text-color;
 
-    background-color: #239ab9;
+    background-color: $back-color;
 }
 
 form {
@@ -24,4 +57,5 @@ form {
 @import "components/container.scss";
 @import "components/new-task.scss";
 @import "components/todo-item.scss";
+@import "components/no-items";
 @import "components/todo-list.scss";

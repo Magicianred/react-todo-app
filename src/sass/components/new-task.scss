@@ -1,17 +1,18 @@
 .new-task {
-    padding: 20px;
+    padding-bottom: 50px;
 
-    border-bottom: 1px solid #b7b7b7;
+    @include input-placeholder();
 
     input {
-        width: 320px;
-        padding: 5px;
+        width: 260px;
+        padding: 10px;
         margin: 0 10px 0 0;
 
         font-size: 16px;
-        color: #373737;
+        color: $main-text-color;
 
-        border: 1px solid #b7b7b7;
+        border: 1px solid $grey;
+        border-radius: 5px;
     }
 
     input:focus {
@@ -19,19 +20,20 @@
     }
 
     &__submit {
-        padding: 0;
+        padding: 10px;
         margin: 0;
         width: 80px;
 
-        color: #373737;
+        color: $main-text-color;
         font-size: 16px;
-        line-height: 30px;
 
-        background: white;
-        border: 1px solid #b7b7b7;
+        background: #fff;
+        border: 1px solid $grey;
+        border-radius: 5px;
 
         vertical-align: top;
         outline: none;
+        cursor: pointer;
     }
 
     &__error {

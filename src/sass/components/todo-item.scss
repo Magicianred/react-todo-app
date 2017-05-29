@@ -1,14 +1,16 @@
 .todo-item {
+    @include input-placeholder();
+
     input {
-        width: 320px;
-        padding: 0 5px;
-        margin: 0 10px 0 0;
+        width: 260px;
+        padding: 10px;
+        margin: 0;
 
         font-size: 16px;
-        color: #373737;
-        line-height: 30px;
+        color: $main-text-color;
 
-        border: 1px solid #b7b7b7;
+        border: 1px solid $grey;
+        border-radius: 5px;
     }
 
     input:focus {
@@ -16,13 +18,13 @@
     }
 
     &__edit-form + &__actions {
-        line-height: 30px;
+        line-height: 40px;
 
         opacity: 1;
     }
 
     &:not(:last-child) {
-        padding-bottom: 20px;
+        padding-bottom: 25px;
     }
 
     &:hover &__actions {
@@ -30,7 +32,14 @@
     }
 
     &__actions {
+        float: right;
+
+        opacity: 0;
+
         .fa {
+            font-size: 20px;
+            line-height: 25px;
+
             cursor: pointer;
         }
 
@@ -46,18 +55,18 @@
     }
 
     &__edit-form {
-        display: block;
-        float: left;
-        width: 320px;
+        display: inline-block;
+        width: 260px;
     }
 
     &__task {
         position: relative;
 
-        padding-left: 22px;
-        display: block;
-        float: left;
-        width: 320px;
+        padding-left: 35px;
+        display: inline-block;
+        width: 260px;
+
+        line-height: 25px;
 
         cursor: pointer;
 
@@ -65,19 +74,22 @@
             position: absolute;
             left: 0px;
 
+            color: $lightgrey;
             font-family: "FontAwesome";
+            font-size: 25px;
+            line-height: 25px;
             text-decoration: none;
 
             content: "\f10c";
         }
 
         &--done {
-            color: #b7b7b7;
+            color: $grey;
             text-decoration: line-through;
         }
 
         &--done::before {
-            color: #239ab9;
+            color: $green;
 
             content: "\f058";
         }
@@ -90,8 +102,5 @@
 
             opacity: 0;
         }
-
-
     }
-
 }

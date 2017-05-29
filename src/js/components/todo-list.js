@@ -9,11 +9,25 @@ export default class TodoList extends React.Component {
         )
     }
 
+    renderList() {
+        if (this.props.todoData.length === 0) {
+            return (
+                <div className="no-items">
+                    <i className="fa fa-file-text-o" aria-hidden="true"></i>
+                    <span>No tasks</span>
+                </div>
+            )
+        } else {
+            return (
+                <ul className="todo-list">
+                    {this.renderItems()}
+                </ul>
+            )
+        }
+    }
+
     render() {
-        return (
-            <ul className="todo-list">
-                {this.renderItems()}
-            </ul>
-        );
+        return this.renderList();
     }
 }
+
